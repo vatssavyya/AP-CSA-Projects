@@ -1,0 +1,3 @@
+"Digdug", 0, 0, V
+"Big Chungus", 0, 0, H
+"Remioromen", 3, 2, H

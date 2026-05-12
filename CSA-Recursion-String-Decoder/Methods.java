@@ -17,21 +17,26 @@ public class Methods {
         for (int i = 0; i < encString.length(); i++) {
             arrayTemp[i] = encString.charAt(i);
         }
-        while (arrayTemp[0] != 1) {
+        if (arrayTemp[0] != 1) {
+            String recursivePass = "";
             for (int j = 0; j < encString.length(); j++) {
                 arrayTemp[j] = (char)((arrayTemp[j] * 2) % 257);
             }
-        }
-        for (int k = 0; k < arrayTemp.length; k++) {
-            if ((arrayTemp[k] - 10) < 32) {
-                
-                arrayTemp[k] = (char)(32);
+            for (char x : arrayTemp) {
+                recursivePass += x;
             }
-            arrayTemp[k] = (char)(arrayTemp[k]);
+            return decode(recursivePass);
         }
-
-
-
+        for (int k = 1; k < arrayTemp.length; k++) {
+            int shifted = arrayTemp[k] - 10;
+            if (shifted < 32) {
+                shifted = 127 - (32 - (shifted));
+            }
+            arrayTemp[k] = (char)(shifted);
+        }
+        for (int i = 1; i < arrayTemp.length; i++) {
+            unscrambled += arrayTemp[i];
+        }
         return unscrambled;
     }
 }

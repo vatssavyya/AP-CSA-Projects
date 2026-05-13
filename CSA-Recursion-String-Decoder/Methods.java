@@ -10,7 +10,7 @@ public class Methods {
         }
         return jumbled;
     }
-    //do 2 * mod 257 cuz it guarantees a return to 1
+
     public static String decode(String encString) {
         String unscrambled = "";
         char[] arrayTemp = new char[encString.length()];
@@ -25,6 +25,7 @@ public class Methods {
             for (char x : arrayTemp) {
                 recursivePass += x;
             }
+            System.out.println(recursivePass);
             return decode(recursivePass);
         }
         for (int k = 1; k < arrayTemp.length; k++) {

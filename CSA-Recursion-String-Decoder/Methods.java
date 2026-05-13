@@ -17,16 +17,18 @@ public class Methods {
         for (int i = 0; i < encString.length(); i++) {
             arrayTemp[i] = encString.charAt(i);
         }
-        if (arrayTemp[0] != 1) {
-            String recursivePass = "";
-            for (int j = 0; j < encString.length(); j++) {
+        for (int round = 1; round <= 20; round++) {
+            if (arrayTemp[0] == 1) {
+                break;
+            }
+            String currentPass = "";
+            for (int j = 0; j < arrayTemp.length; j++) {
                 arrayTemp[j] = (char)((arrayTemp[j] * 2) % 257);
             }
             for (char x : arrayTemp) {
-                recursivePass += x;
+                currentPass += x;
             }
-            System.out.println(recursivePass);
-            return decode(recursivePass);
+            System.out.println("Round " + round + ": " + currentPass);
         }
         for (int k = 1; k < arrayTemp.length; k++) {
             int shifted = arrayTemp[k] - 10;
